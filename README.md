@@ -11,29 +11,47 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# index_cut
+The widget represents a screen like an index cut
 
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## Demo
+<img src="https://github.com/Shoryu-Y/index_cut/assets/44453803/1fd28f30-7c38-4968-b58f-adee359d531a" width="400">
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
 ```dart
-const like = 'sample';
+class IndexCutView extends StatefulWidget {
+  const IndexCutView({super.key});
+
+  @override
+  State<IndexCutView> createState() => _IndexCutViewState();
+}
+
+class _IndexCutViewState extends State<IndexCutView> {
+  int currentIndex = 0;
+
+  final items = [
+    const Text('1', style: TextStyle(fontSize: 18)),
+    const Text('2', style: TextStyle(fontSize: 18)),
+    const Text('3', style: TextStyle(fontSize: 18)),
+    const Text('4', style: TextStyle(fontSize: 18)),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return IndexCut(
+      currentIndex: currentIndex,
+      icons: items,
+      isOneWay: false,
+      onChanged: (index) {
+        setState(() {
+          currentIndex = index;
+        });
+      },
+      child: Center(
+        child: items[currentIndex],
+      ),
+    );
+  }
+}
 ```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
